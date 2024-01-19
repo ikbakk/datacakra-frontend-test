@@ -5,9 +5,9 @@ import InputWithLabel from '../InputWithLabel';
 import { Button } from '../ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-type RegisterFormProps = {};
+type LoginFormProps = {};
 
-const RegisterForm = ({}: RegisterFormProps) => {
+const LoginForm = ({}: LoginFormProps) => {
   const { register, handleSubmit } = useForm<FormFieldsType>();
 
   const onSubmit: SubmitHandler<FormFieldsType> = (data) => {
@@ -16,12 +16,6 @@ const RegisterForm = ({}: RegisterFormProps) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-      <InputWithLabel
-        name="name"
-        placeholder="name"
-        type="text"
-        register={register}
-      />
       <InputWithLabel
         name="email"
         placeholder="contoh@email.com"
@@ -34,9 +28,9 @@ const RegisterForm = ({}: RegisterFormProps) => {
         type="password"
         register={register}
       />
-      <Button type="submit">Daftar Sekarang</Button>
+      <Button type="submit">Masuk</Button>
     </form>
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
