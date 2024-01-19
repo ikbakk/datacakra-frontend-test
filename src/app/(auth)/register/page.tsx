@@ -1,7 +1,6 @@
 import Icon from '@/components/Icon';
-import InputWithLabel from '@/components/InputWithLabel';
+import RegisterForm from '@/components/auth/RegisterForm';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import Link from 'next/link';
 
 type RegisterPageProps = {};
@@ -14,20 +13,7 @@ const RegisterPage = ({}: RegisterPageProps) => {
         <p>Masukkan email anda untuk membuat akun baru</p>
       </section>
       <section className="flex flex-col gap-2">
-        <form className="flex flex-col gap-2">
-          <InputWithLabel
-            name="email"
-            placeholder="contoh@email.com"
-            type="email"
-          />
-          <InputWithLabel name="nama" placeholder="John Doe" type="text" />
-          <InputWithLabel
-            name="password"
-            placeholder="Minimal 4 karakter"
-            type="password"
-          />
-          <Button>Daftar Sekarang</Button>
-        </form>
+        <RegisterForm />
         <p className="text-center">Atau</p>
         <Button>
           <Icon className="mr-2" name="Github" /> Github
