@@ -4,14 +4,39 @@ import { FormFieldsType } from '@/lib/types/fields';
 import InputWithLabel from '../InputWithLabel';
 import { Button } from '../ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { supabaseClient } from '@/lib/supabaseClient';
+import { useRouter } from 'next/navigation';
 
-type RegisterFormProps = {};
-
-const RegisterForm = ({}: RegisterFormProps) => {
+const RegisterForm = () => {
+  const router = useRouter();
   const { register, handleSubmit } = useForm<FormFieldsType>();
 
-  const onSubmit: SubmitHandler<FormFieldsType> = (data) => {
-    console.log(data);
+  const createAccount = async (data: FormFieldsType) => {
+    try {
+      const res = await supabaseClient.auth.signUp({
+        email: data.email,
+        password: data.password,
+        options: {
+          data: {
+            name: data.name,
+          },
+        },
+      });
+
+      if (res.error) {
+        throw new Error(res.error.message);
+      }
+
+      alert('Selamat akun anda telah dibuat');
+      router.replace('/login');
+    } catch (error) {
+      const err = error as Error;
+      alert(err.message);
+    }
+  };
+
+  const onSubmit: SubmitHandler<FormFieldsType> = async (data) => {
+    await createAccount(data);
   };
 
   return (
