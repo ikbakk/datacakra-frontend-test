@@ -1,10 +1,7 @@
 import AuthContainer from '@/components/auth/AuthContainer';
 import LoginForm from '@/components/auth/LoginForm';
-import Link from 'next/link';
 
-type LoginPageProps = {};
-
-const LoginPage = ({}: LoginPageProps) => {
+const LoginPage = () => {
   return (
     <AuthContainer
       title="Selamat datang kembali"

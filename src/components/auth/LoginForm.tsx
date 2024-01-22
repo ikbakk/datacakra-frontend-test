@@ -1,26 +1,21 @@
 'use client';
 
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import { FormFieldsType } from '@/lib/types/fields';
 import InputWithLabel from '../InputWithLabel';
 import { Button } from '../ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import { clientComponentClient } from '@/lib/supabaseClient/client';
+import { clientComponentSupabaseClient } from '@/lib/supabaseClient/client';
 
 type LoginFormProps = {};
 
 const LoginForm = ({}: LoginFormProps) => {
   const router = useRouter();
-  const supabase = createClientComponentClient({
-    supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    supabaseKey: process.env.NEXT_PUBLIC_SUPABASE_KEY!,
-  });
   const { register, handleSubmit } = useForm<FormFieldsType>();
 
   const login = async (data: FormFieldsType) => {
     try {
-      const res = await clientComponentClient.auth.signInWithPassword({
+      const res = await clientComponentSupabaseClient.auth.signInWithPassword({
         email: data.email,
         password: data.password,
       });

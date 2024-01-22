@@ -8,7 +8,7 @@ type IconType = LucideProps & {
 const Icon = ({ name, color, size, ...props }: IconType) => {
   const LucideIcon = icons[name];
 
-  return <LucideIcon {...props} color={color ?? '#fff'} size={size ?? 24} />;
+  return <LucideIcon {...props} color={color} size={size ?? 24} />;
 };
 
 export default Icon;

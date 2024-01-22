@@ -4,7 +4,7 @@ import { FormFieldsType } from '@/lib/types/fields';
 import InputWithLabel from '../InputWithLabel';
 import { Button } from '../ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { clientComponentClient } from '@/lib/supabaseClient/client';
+import { clientComponentSupabaseClient } from '@/lib/supabaseClient/client';
 import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
@@ -13,7 +13,7 @@ const RegisterForm = () => {
 
   const createAccount = async (data: FormFieldsType) => {
     try {
-      const res = await clientComponentClient.auth.signUp({
+      const res = await clientComponentSupabaseClient.auth.signUp({
         email: data.email,
         password: data.password,
         options: {
