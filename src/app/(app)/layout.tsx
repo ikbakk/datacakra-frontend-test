@@ -4,6 +4,9 @@ import '../globals.css';
 import { cn } from '@/lib/utils';
 import Sidebar from '@/components/sidebar';
 import Navbar from '@/components/navbar';
+import { redirect } from 'next/navigation';
+import { getToken } from '@/lib/cookieCheck';
+import { isJwtExpired } from '@/lib/jwtHelper';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,6 +20,13 @@ export default async function AppLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const token = getToken();
+
+  if (token) {
+    if (isJwtExpired(token)) {
+      redirect('/login');
+    }
+  }
   return (
     <html lang="en">
       <body className={cn('flex h-screen w-full bg-accent', inter.className)}>

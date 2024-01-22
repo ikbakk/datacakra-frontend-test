@@ -1,16 +1,18 @@
-import { serverComponentSupabaseClient } from '@/lib/supabaseClient/server';
 import Breadcrumb from './Breadcrumb';
 import NameDisplay from './NameDisplay';
-import { Button } from '../ui/button';
 import LogoutButton from './LogoutButton';
+import { getToken } from '@/lib/cookieCheck';
+import { getJwtPayload } from '@/lib/jwtHelper';
 
 const Navbar = async () => {
-  const { data } = await serverComponentSupabaseClient.auth.getUser();
+  const token = getToken();
+  const jwtPayload = getJwtPayload(token!);
+
   return (
     <header className="flex w-full items-center justify-between gap-4 p-4">
       <Breadcrumb />
       <section className="flex w-full items-center justify-end gap-8">
-        <NameDisplay name={data.user?.user_metadata.name} />
+        <NameDisplay name={jwtPayload?.name ?? 'User'} />
         <LogoutButton />
       </section>
     </header>

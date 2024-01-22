@@ -1,14 +1,12 @@
-import { serverComponentSupabaseClient } from '@/lib/supabaseClient/server';
-import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
 
 type MainPageProps = {};
 
 const MainPage = async ({}: MainPageProps) => {
-  const { data } = await serverComponentSupabaseClient.auth.getSession();
+  const cookieStore = cookies();
+  const token = cookieStore.get('access_token')?.value;
 
-  if (!data.session) {
-    redirect('/login');
-  }
+  console.log(token);
   return <div>MainPage</div>;
 };
 
