@@ -29,9 +29,14 @@ export default async function AppLayout({
   }
   return (
     <html lang="en">
-      <body className={cn('flex h-screen w-full bg-accent', inter.className)}>
+      <body
+        className={cn(
+          'relative flex h-screen w-full flex-grow-0 overflow-hidden bg-accent',
+          inter.className,
+        )}
+      >
         <Sidebar />
-        <section className="w-full">
+        <section className="mb-4 min-h-screen w-[80%] overflow-auto p-4">
           <Navbar />
           {children}
         </section>

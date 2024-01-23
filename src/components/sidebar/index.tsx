@@ -4,7 +4,7 @@ type SidebarProps = {};
 
 const Sidebar = ({}: SidebarProps) => {
   return (
-    <section className="flex w-[20%] flex-grow-0 flex-col gap-8 py-8">
+    <section className="flex h-full w-[20%] flex-grow-0 flex-col gap-8 py-8">
       <header className="text-wrap px-4 text-center text-3xl leading-none">
         Biro Travel AAB
       </header>

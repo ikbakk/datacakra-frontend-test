@@ -1,5 +1,6 @@
 import DashboardCard from './Card';
 import { Tourist } from '../../lib/types/tourist';
+import { formatDate } from '@/lib/dateFormatter';
 import PlaceholderDashboard from './Placeholder';
 
 type DashboardProps = {
@@ -9,15 +10,6 @@ type DashboardProps = {
 
 const Dashboard = ({ touristsData, totalTourists }: DashboardProps) => {
   const latestTourist = touristsData[0];
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString).toLocaleDateString('id-ID', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    });
-
-    return date;
-  };
   return (
     <>
       <section className="flex w-full justify-between gap-4">

@@ -13,8 +13,6 @@ const LoginForm = ({}: LoginFormProps) => {
   const searchParams = useSearchParams();
   const { register, handleSubmit } = useForm<FormFieldsType>();
 
-  console.log(searchParams.get('from'));
-
   const onSubmit: SubmitHandler<FormFieldsType> = async (data) => {
     try {
       const res = await fetch('/api/login', {
