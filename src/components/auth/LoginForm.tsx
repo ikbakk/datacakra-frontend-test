@@ -1,6 +1,6 @@
 'use client';
 
-import { FormFieldsType } from '@/lib/types/fields';
+import { AuthFormFieldsType } from '@/lib/types/fields';
 import InputWithLabel from '../InputWithLabel';
 import { Button } from '../ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -11,9 +11,9 @@ type LoginFormProps = {};
 const LoginForm = ({}: LoginFormProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { register, handleSubmit } = useForm<FormFieldsType>();
+  const { register, handleSubmit } = useForm<AuthFormFieldsType>();
 
-  const onSubmit: SubmitHandler<FormFieldsType> = async (data) => {
+  const onSubmit: SubmitHandler<AuthFormFieldsType> = async (data) => {
     try {
       const res = await fetch('/api/login', {
         method: 'POST',
@@ -40,13 +40,13 @@ const LoginForm = ({}: LoginFormProps) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-      <InputWithLabel
+      <InputWithLabel<AuthFormFieldsType>
         name="email"
         placeholder="contoh@email.com"
         type="email"
         register={register}
       />
-      <InputWithLabel
+      <InputWithLabel<AuthFormFieldsType>
         name="password"
         placeholder="password"
         type="password"

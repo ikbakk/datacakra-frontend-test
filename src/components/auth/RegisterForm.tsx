@@ -1,6 +1,6 @@
 'use client';
 
-import { FormFieldsType } from '@/lib/types/fields';
+import { AuthFormFieldsType } from '@/lib/types/fields';
 import InputWithLabel from '../InputWithLabel';
 import { Button } from '../ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -8,9 +8,9 @@ import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm<FormFieldsType>();
+  const { register, handleSubmit } = useForm<AuthFormFieldsType>();
 
-  const createAccount = async (data: FormFieldsType) => {
+  const createAccount = async (data: AuthFormFieldsType) => {
     try {
       await fetch(
         `${process.env.NEXT_PUBLIC_BASEURL}/api/authaccount/registration`,
@@ -31,25 +31,25 @@ const RegisterForm = () => {
     }
   };
 
-  const onSubmit: SubmitHandler<FormFieldsType> = async (data) => {
+  const onSubmit: SubmitHandler<AuthFormFieldsType> = async (data) => {
     await createAccount(data);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-2">
-      <InputWithLabel
+      <InputWithLabel<AuthFormFieldsType>
         name="name"
         placeholder="name"
         type="text"
         register={register}
       />
-      <InputWithLabel
+      <InputWithLabel<AuthFormFieldsType>
         name="email"
         placeholder="contoh@email.com"
         type="email"
         register={register}
       />
-      <InputWithLabel
+      <InputWithLabel<AuthFormFieldsType>
         name="password"
         placeholder="password"
         type="password"

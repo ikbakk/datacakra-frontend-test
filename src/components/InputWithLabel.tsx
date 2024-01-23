@@ -1,30 +1,35 @@
 'use client';
 
 import { HTMLInputTypeAttribute } from 'react';
-import { UseFormRegister, RegisterOptions } from 'react-hook-form';
+import {
+  UseFormRegister,
+  RegisterOptions,
+  FieldValues,
+  Path,
+} from 'react-hook-form';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
-import { FormFieldsType } from '@/lib/types/fields';
+import { AuthFormFieldsType, MutationFormFieldsType } from '@/lib/types/fields';
 
-type InputWithLabelProps = {
-  name: keyof FormFieldsType;
+type InputWithLabelProps<T extends FieldValues> = {
+  name: Path<T>;
   placeholder: string;
   type: HTMLInputTypeAttribute;
-  register: UseFormRegister<FormFieldsType>;
+  register: UseFormRegister<T>;
   registerOpions?: RegisterOptions;
 };
 
-const InputWithLabel = ({
+const InputWithLabel = <T extends FieldValues>({
   name,
   placeholder,
   type,
   register,
   registerOpions,
-}: InputWithLabelProps) => {
+}: InputWithLabelProps<T>) => {
   return (
     <div className="flex flex-col gap-1 ">
-      <Label className="capitalize" htmlFor={name}>
-        {name}
+      <Label className="capitalize" htmlFor={name.toString()}>
+        {name.toString()}
       </Label>
       <Input
         {...register(name, registerOpions)}
