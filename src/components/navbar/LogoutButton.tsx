@@ -7,7 +7,7 @@ const LogoutButton = () => {
   const router = useRouter();
   const logout = async () => {
     try {
-      console.log('logout');
+      await fetch('/api/logout');
 
       router.replace('/login');
     } catch (error) {}

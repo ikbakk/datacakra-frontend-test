@@ -59,6 +59,7 @@ const LoginForm = ({}: LoginFormProps) => {
       }
 
       alert('Login sukses');
+      router.replace('/');
     } catch (error) {
       // console.log(error);
       alert('Login gagal, periksa kredensial anda');

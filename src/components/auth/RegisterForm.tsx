@@ -4,7 +4,6 @@ import { FormFieldsType } from '@/lib/types/fields';
 import InputWithLabel from '../InputWithLabel';
 import { Button } from '../ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { clientComponentSupabaseClient } from '@/lib/supabaseClient/client';
 import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
@@ -13,19 +12,16 @@ const RegisterForm = () => {
 
   const createAccount = async (data: FormFieldsType) => {
     try {
-      const res = await clientComponentSupabaseClient.auth.signUp({
-        email: data.email,
-        password: data.password,
-        options: {
-          data: {
-            name: data.name,
+      await fetch(
+        `${process.env.NEXT_PUBLIC_BASEURL}/api/authaccount/registration`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
           },
+          body: JSON.stringify(data),
         },
-      });
-
-      if (res.error) {
-        throw new Error(res.error.message);
-      }
+      );
 
       alert('Selamat akun anda telah dibuat');
       router.replace('/login');
