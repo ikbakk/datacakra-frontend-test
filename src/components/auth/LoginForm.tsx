@@ -4,49 +4,18 @@ import { FormFieldsType } from '@/lib/types/fields';
 import InputWithLabel from '../InputWithLabel';
 import { Button } from '../ui/button';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-import useFetch from '@/hooks/useFetch';
-import { useEffect } from 'react';
-import { LoginResponse } from '@/lib/types/auth';
-import Loading from '../ui/loading';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 type LoginFormProps = {};
 
 const LoginForm = ({}: LoginFormProps) => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { register, handleSubmit } = useForm<FormFieldsType>();
-  // const { data, error, fetchData, isLoading } = useFetch<LoginResponse>();
 
-  // useEffect(() => {
-  //   if (data) {
-  //     const authStatus = {
-  //       name: data.data.Name,
-  //       isLoggedIn: true,
-  //       token: data.data.Token,
-  //     };
-  //     localStorage.setItem('user', JSON.stringify(authStatus));
-  //     alert('Login sukses');
-  //     router.push('/turis');
-  //   }
-
-  //   if (error) {
-  //     alert(error);
-  //   }
-  // }, [data, error]);
+  console.log(searchParams.get('from'));
 
   const onSubmit: SubmitHandler<FormFieldsType> = async (data) => {
-    // if (data.email && data.password) {
-    //   fetchData('authaccount/login', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       email: data.email,
-    //       password: data.password,
-    //     }),
-    //   });
-    // }
     try {
       const res = await fetch('/api/login', {
         method: 'POST',
@@ -59,7 +28,12 @@ const LoginForm = ({}: LoginFormProps) => {
       }
 
       alert('Login sukses');
-      router.replace('/');
+
+      if (searchParams.get('from')) {
+        router.push(searchParams.get('from') as string);
+      } else {
+        router.push('/');
+      }
     } catch (error) {
       // console.log(error);
       alert('Login gagal, periksa kredensial anda');

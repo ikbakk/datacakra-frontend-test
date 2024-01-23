@@ -26,8 +26,6 @@ export default async function AppLayout({
     if (isJwtExpired(token)) {
       redirect('/login');
     }
-  } else if (!token) {
-    redirect('/login');
   }
   return (
     <html lang="en">
