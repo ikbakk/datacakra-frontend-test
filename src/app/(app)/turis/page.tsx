@@ -5,6 +5,8 @@ import TablePagination from '@/components/turis/tablePagination';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 type TouristsPageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
 };

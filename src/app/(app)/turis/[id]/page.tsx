@@ -3,6 +3,8 @@ import TouristEditForm from '@/components/turis/detail/editForm';
 import { getToken } from '@/lib/cookieCheck';
 import { Tourist } from '@/lib/types/tourist';
 
+export const dynamic = 'force-dynamic';
+
 type TouristDetailPageType = {
   params: {
     id: string;
@@ -20,8 +22,6 @@ const TurisDetailPage = async ({ params }: TouristDetailPageType) => {
     cache: 'no-store',
   });
   const tourist = (await touristReq.json()) as Tourist;
-
-  console.log(tourist);
 
   return (
     <div className="h-[89%]">

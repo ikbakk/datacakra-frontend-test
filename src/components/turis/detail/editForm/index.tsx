@@ -26,30 +26,22 @@ const TouristEditForm = ({
   const isEditing = searchParams.get('isEditing');
   const { register, handleSubmit } = useForm<MutationFormFieldsType>();
 
-  console.log(path);
-
   const onSubmit: SubmitHandler<MutationFormFieldsType> = async (data) => {
     try {
       const body = {
         tourist_location: data.location,
         tourist_name: data.name,
         tourist_email: data.email,
+        id: idTourist,
       };
-      await fetch(
-        `${process.env.NEXT_PUBLIC_BASEURL}/api/Tourist/${idTourist}`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(body),
-        },
-      );
+      await fetch('/api/turis/update', {
+        method: 'PUT',
+        body: JSON.stringify(body),
+      });
 
       alert('Update sukses');
       router.refresh();
-      router.replace(path);
+      router.push(path);
     } catch (error) {
       // console.log(error);
       alert('Update gagal');
