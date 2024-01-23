@@ -28,6 +28,7 @@ const ProfilePage = async ({}: ProfilePageProps) => {
         email={user.email}
         profilePicture={user.avatar}
         buttonTitle="Edit Profile"
+        href="/profil"
       />
       <section className="flex w-full justify-between gap-4 lg:mt-20 2xl:mt-24">
         <div className="flex w-full flex-col gap-4">Profile</div>
