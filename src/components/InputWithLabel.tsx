@@ -17,6 +17,7 @@ type InputWithLabelProps<T extends FieldValues> = {
   type: HTMLInputTypeAttribute;
   register: UseFormRegister<T>;
   registerOpions?: RegisterOptions;
+  disabled?: boolean;
 };
 
 const InputWithLabel = <T extends FieldValues>({
@@ -25,6 +26,7 @@ const InputWithLabel = <T extends FieldValues>({
   type,
   register,
   registerOpions,
+  disabled,
 }: InputWithLabelProps<T>) => {
   return (
     <div className="flex flex-col gap-1 ">
@@ -35,6 +37,7 @@ const InputWithLabel = <T extends FieldValues>({
         {...register(name, registerOpions)}
         placeholder={placeholder}
         type={type}
+        disabled={disabled}
       />
     </div>
   );

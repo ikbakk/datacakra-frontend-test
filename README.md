@@ -14,6 +14,6 @@ buat sebuah app biro perjalanan yang mengatur keluar masuknya turis yang mendaft
 - [x] User bisa mengakses list turis
   - [x] ada _pagination_
 - [x] ketika salah satu turis diklik, user akan diperlihatkan detail si turis pada page tersendiri.
-- [ ] user bisa meng*update* data turis.
-- [ ] user bisa menghapus data turis
-- [ ] user bisa menambahkan data turis
+- [x] user bisa meng*update* data turis.
+- [x] user bisa menghapus data turis
+- [x] user bisa menambahkan data turis

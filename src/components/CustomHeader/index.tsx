@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button } from '../ui/button';
 import CustomHeaderAvatar from './Avatar';
 import CustomHeaderWrapper from './Wrapper';
@@ -7,6 +8,7 @@ type CustomHeaderProps = {
   name: string;
   email: string;
   buttonTitle: string;
+  href: string;
 };
 
 const CustomHeader = ({
@@ -14,6 +16,7 @@ const CustomHeader = ({
   name,
   email,
   buttonTitle,
+  href,
 }: CustomHeaderProps) => {
   return (
     <CustomHeaderWrapper>
@@ -23,7 +26,9 @@ const CustomHeader = ({
         <h3>{email}</h3>
       </section>
       <section className="my-auto">
-        <Button>{buttonTitle}</Button>
+        <Link href={href}>
+          <Button>{buttonTitle}</Button>
+        </Link>
       </section>
     </CustomHeaderWrapper>
   );

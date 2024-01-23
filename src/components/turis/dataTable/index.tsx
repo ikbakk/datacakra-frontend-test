@@ -7,12 +7,14 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import TouristDataRow from './TableRow';
+import { getToken } from '@/lib/cookieCheck';
 
 type TouristDataTableProps = {
   tourists: Tourist[];
 };
 
 const TouristDataTable = ({ tourists }: TouristDataTableProps) => {
+  const token = getToken();
   return (
     <Table>
       <TableHeader>
@@ -34,6 +36,7 @@ const TouristDataTable = ({ tourists }: TouristDataTableProps) => {
             location={tourist.tourist_location}
             createdat={tourist.createdat}
             profilePicture={tourist.tourist_profilepicture}
+            token={token}
           />
         ))}
       </TableBody>

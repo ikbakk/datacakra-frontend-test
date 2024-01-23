@@ -14,6 +14,7 @@ type TouristDataRowProps = {
   email: string;
   location: string;
   createdat: string;
+  token?: string;
 };
 
 const TouristDataRow = ({
@@ -23,6 +24,7 @@ const TouristDataRow = ({
   location,
   createdat,
   id,
+  token,
 }: TouristDataRowProps) => {
   const router = useRouter();
 
@@ -30,11 +32,32 @@ const TouristDataRow = ({
     router.push(`/turis/${id}`);
   };
 
-  const handleButtonClick = (
+  const handleButtonClick = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     e.stopPropagation();
-    console.log(name);
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BASEURL}/api/Tourist/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      }
+      router.refresh();
+
+      alert('Hapus data sukses');
+    } catch (error) {
+      console.log(error);
+      alert('Hapus data gagal');
+    }
   };
   return (
     <TableRow

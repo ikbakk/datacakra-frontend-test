@@ -2,6 +2,8 @@ import { getToken } from '../../../lib/cookieCheck';
 import { TouristResponse } from '@/lib/types/tourist';
 import TouristDataTable from '@/components/turis/dataTable';
 import TablePagination from '@/components/turis/tablePagination';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 type TouristsPageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -25,7 +27,12 @@ const TouristsPage = async ({ searchParams }: TouristsPageProps) => {
 
   return (
     <div className="flex  w-full flex-col gap-4 rounded-lg bg-card p-4 shadow-md">
-      <h3 className=" font-semibold">Daftar Turis </h3>
+      <section className="flex items-center justify-between">
+        <h3 className=" font-semibold">Daftar Turis </h3>
+        <Link href="turis/add">
+          <Button>Tambah Turis Baru</Button>
+        </Link>
+      </section>
       <TouristDataTable tourists={tourists.data} />
       <TablePagination
         currentPage={page ? Number(page) : 1}
