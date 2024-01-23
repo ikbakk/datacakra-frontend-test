@@ -10,6 +10,7 @@ const Sidebar = ({}: SidebarProps) => {
       </header>
       <section className="flex flex-col justify-center px-4">
         <ul>
+          <SidebarItem href="/" icon="LayoutDashboard" title="Dashboard" />
           <SidebarItem href="/turis" icon="List" title="Daftar Turis" />
         </ul>
         <p className="mb-2 mt-8 text-center font-semibold">Settings</p>
