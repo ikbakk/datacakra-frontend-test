@@ -5,14 +5,14 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '../ui/table';
-import TurisTableRow from './TurisTableRow';
+} from '@/components/ui/table';
+import TouristDataRow from './TableRow';
 
-type TurisTableProps = {
+type TouristDataTableProps = {
   tourists: Tourist[];
 };
 
-const TurisTable = ({ tourists }: TurisTableProps) => {
+const TouristDataTable = ({ tourists }: TouristDataTableProps) => {
   return (
     <Table>
       <TableHeader>
@@ -26,7 +26,7 @@ const TurisTable = ({ tourists }: TurisTableProps) => {
       </TableHeader>
       <TableBody>
         {tourists.map((tourist) => (
-          <TurisTableRow
+          <TouristDataRow
             key={tourist.id}
             id={tourist.id}
             name={tourist.tourist_name}
@@ -41,4 +41,4 @@ const TurisTable = ({ tourists }: TurisTableProps) => {
   );
 };
 
-export default TurisTable;
+export default TouristDataTable;

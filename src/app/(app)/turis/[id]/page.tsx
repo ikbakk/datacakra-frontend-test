@@ -1,8 +1,7 @@
+import CustomHeader from '@/components/CustomHeader';
 import TurisDetailCard from '@/components/turis/detail/TurisDetailCard';
-import DetailHeader from '@/components/turis/detail/TurisDetailHeader';
 import { getToken } from '@/lib/cookieCheck';
 import { Tourist } from '@/lib/types/tourist';
-import { title } from 'process';
 
 type TouristDetailPageType = {
   params: {
@@ -57,10 +56,10 @@ const TurisDetailPage = async ({ params }: TouristDetailPageType) => {
 
   return (
     <div className="h-[89%]">
-      <DetailHeader
-        name={tourist.tourist_name}
-        createdat={tourist.createdat}
+      <CustomHeader
+        buttonTitle="Edit Info Turis"
         email={tourist.tourist_email}
+        name={tourist.tourist_name}
         profilePicture={tourist.tourist_profilepicture}
       />
       <section className="flex w-full justify-between gap-4 lg:mt-20 2xl:mt-24">

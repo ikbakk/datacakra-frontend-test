@@ -1,12 +1,13 @@
 'use client';
 
+import Icon from '@/components/Icon';
+import { Button } from '@/components/ui/button';
+import { TableCell, TableRow } from '@/components/ui/table';
 import { formatDate } from '@/lib/dateFormatter';
-import { TableCell, TableRow } from '../ui/table';
-import { Button } from '../ui/button';
-import Icon from '../Icon';
+
 import { useRouter } from 'next/navigation';
 
-type TurisTableRowType = {
+type TouristDataRowProps = {
   id: string;
   profilePicture: string;
   name: string;
@@ -15,14 +16,14 @@ type TurisTableRowType = {
   createdat: string;
 };
 
-const TurisTableRow = ({
+const TouristDataRow = ({
   name,
   profilePicture,
   email,
   location,
   createdat,
   id,
-}: TurisTableRowType) => {
+}: TouristDataRowProps) => {
   const router = useRouter();
 
   const handleRowClick = () => {
@@ -60,4 +61,4 @@ const TurisTableRow = ({
   );
 };
 
-export default TurisTableRow;
+export default TouristDataRow;

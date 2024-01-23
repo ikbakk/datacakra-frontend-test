@@ -1,7 +1,7 @@
-import TurisTable from '@/components/turis/TurisTable';
 import { getToken } from '../../../lib/cookieCheck';
 import { TouristResponse } from '@/lib/types/tourist';
-import TurisPagination from '@/components/turis/PaginationWrapper';
+import TouristDataTable from '@/components/turis/dataTable';
+import TablePagination from '@/components/turis/tablePagination';
 
 type TouristsPageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -26,8 +26,8 @@ const TouristsPage = async ({ searchParams }: TouristsPageProps) => {
   return (
     <div className="flex  w-full flex-col gap-4 rounded-lg bg-card p-4 shadow-md">
       <h3 className=" font-semibold">Daftar Turis </h3>
-      <TurisTable tourists={tourists.data} />
-      <TurisPagination
+      <TouristDataTable tourists={tourists.data} />
+      <TablePagination
         currentPage={page ? Number(page) : 1}
         totalPages={tourists.total_pages}
       />

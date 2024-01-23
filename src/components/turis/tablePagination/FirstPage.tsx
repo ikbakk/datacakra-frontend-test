@@ -4,13 +4,13 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '../ui/pagination';
+} from '@/components/ui/pagination';
 
-type TurisPaginationFirstProps = {
+type FirstPagePaginationProps = {
   totalPages: number;
 };
 
-const TurisPaginationFirst = ({ totalPages }: TurisPaginationFirstProps) => {
+const FirstPagePagination = ({ totalPages }: FirstPagePaginationProps) => {
   return (
     <>
       <PaginationItem>
@@ -43,4 +43,4 @@ const TurisPaginationFirst = ({ totalPages }: TurisPaginationFirstProps) => {
   );
 };
 
-export default TurisPaginationFirst;
+export default FirstPagePagination;

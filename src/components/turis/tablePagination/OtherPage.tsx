@@ -4,19 +4,19 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '../ui/pagination';
+} from '@/components/ui/pagination';
 
-type TurisPaginationProps = {
+type OtherPagePaginationProps = {
   currentPage: number;
   totalPages: number;
   changePage: (modifier: number) => string;
 };
 
-const TurisPagination = ({
+const OtherPagePagination = ({
   changePage,
   currentPage,
   totalPages,
-}: TurisPaginationProps) => {
+}: OtherPagePaginationProps) => {
   return (
     <>
       <PaginationItem>
@@ -53,4 +53,4 @@ const TurisPagination = ({
   );
 };
 
-export default TurisPagination;
+export default OtherPagePagination;

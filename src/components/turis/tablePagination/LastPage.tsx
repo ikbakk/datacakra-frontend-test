@@ -4,13 +4,13 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '../ui/pagination';
+} from '@/components/ui/pagination';
 
-type TurisPaginationLastProps = {
+type LastPagePaginationProps = {
   totalPages: number;
 };
 
-const TurisPaginationLast = ({ totalPages }: TurisPaginationLastProps) => {
+const LastPagePagination = ({ totalPages }: LastPagePaginationProps) => {
   return (
     <>
       <PaginationItem>
@@ -39,4 +39,4 @@ const TurisPaginationLast = ({ totalPages }: TurisPaginationLastProps) => {
   );
 };
 
-export default TurisPaginationLast;
+export default LastPagePagination;

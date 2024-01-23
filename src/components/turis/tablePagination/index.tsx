@@ -1,17 +1,14 @@
-import { Pagination, PaginationContent } from '../ui/pagination';
-import TurisPaginationFirst from './TurisPaginationFirst';
-import TurisPaginationLast from './TurisPaginationLast';
-import TurisPagination from './TurisPagination';
+import { Pagination, PaginationContent } from '@/components/ui/pagination';
+import FirstPagePagination from './FirstPage';
+import LastPagePagination from './LastPage';
+import OtherPagePagination from './OtherPage';
 
-type TurisPaginationProps = {
+type TablePaginationType = {
   currentPage: number;
   totalPages: number;
 };
 
-const TurisPaginationWrapper = ({
-  totalPages,
-  currentPage,
-}: TurisPaginationProps) => {
+const TablePagination = ({ totalPages, currentPage }: TablePaginationType) => {
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === totalPages;
   const changePage = (modifier: number) => {
@@ -22,11 +19,11 @@ const TurisPaginationWrapper = ({
     <Pagination>
       <PaginationContent>
         {isFirstPage ? (
-          <TurisPaginationFirst totalPages={totalPages} />
+          <FirstPagePagination totalPages={totalPages} />
         ) : isLastPage ? (
-          <TurisPaginationLast totalPages={totalPages} />
+          <LastPagePagination totalPages={totalPages} />
         ) : (
-          <TurisPagination
+          <OtherPagePagination
             changePage={changePage}
             currentPage={currentPage}
             totalPages={totalPages}
@@ -37,4 +34,4 @@ const TurisPaginationWrapper = ({
   );
 };
 
-export default TurisPaginationWrapper;
+export default TablePagination;
