@@ -15,7 +15,5 @@ export async function PUT(req: NextRequest) {
     body: JSON.stringify(body),
   });
 
-  revalidatePath('/turis/[id]', 'page');
-
   return NextResponse.json({ message: 'success' });
 }

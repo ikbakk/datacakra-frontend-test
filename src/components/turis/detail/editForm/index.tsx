@@ -5,6 +5,7 @@ import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { MutationFormFieldsType } from '../../../../lib/types/fields';
 import InputWithLabel from '@/components/InputWithLabel';
 import { Button } from '@/components/ui/button';
+import { useEffect } from 'react';
 
 type TouristEditFormprops = {
   name: string;
@@ -26,6 +27,10 @@ const TouristEditForm = ({
   const isEditing = searchParams.get('isEditing');
   const { register, handleSubmit } = useForm<MutationFormFieldsType>();
 
+  useEffect(() => {
+    router.refresh();
+  }, []);
+
   const onSubmit: SubmitHandler<MutationFormFieldsType> = async (data) => {
     try {
       const body = {
@@ -41,7 +46,6 @@ const TouristEditForm = ({
 
       alert('Update sukses');
       router.refresh();
-      router.push(path);
     } catch (error) {
       // console.log(error);
       alert('Update gagal');
