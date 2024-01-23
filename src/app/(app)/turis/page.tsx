@@ -10,7 +10,7 @@ type TouristsPageProps = {
 const TouristsPage = async ({ searchParams }: TouristsPageProps) => {
   const { page } = searchParams;
   const token = getToken();
-  const touristReq = await fetch(
+  const touristsReq = await fetch(
     `${process.env.BASEURL}/api/Tourist?page=${page ?? 1}`,
     {
       method: 'GET',
@@ -21,15 +21,15 @@ const TouristsPage = async ({ searchParams }: TouristsPageProps) => {
       cache: 'no-store',
     },
   );
-  const tourist = (await touristReq.json()) as TouristResponse;
+  const tourists = (await touristsReq.json()) as TouristResponse;
 
   return (
     <div className="flex  w-full flex-col gap-4 rounded-lg bg-card p-4 shadow-md">
       <h3 className=" font-semibold">Daftar Turis </h3>
-      <TurisTable tourists={tourist.data} />
+      <TurisTable tourists={tourists.data} />
       <TurisPagination
         currentPage={page ? Number(page) : 1}
-        totalPages={tourist.total_pages}
+        totalPages={tourists.total_pages}
       />
     </div>
   );
